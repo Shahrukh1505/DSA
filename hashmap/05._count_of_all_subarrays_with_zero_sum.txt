@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+
+	public static int solution(int[] arr) {
+		
+		HashMap<Integer, Integer> hm = new HashMap<>();
+     
+            hm.put(0, 1);
+            
+            int ps = 0;
+            
+            int ans = 0;
+            for(int i = 0;i<arr.length;i++){
+                ps += arr[i];
+                
+                if(hm.containsKey(ps)){
+                    ans += hm.get(ps);
+                }
+                
+                int nf = hm.getOrDefault(ps, 0) + 1;
+                
+                hm.put(ps, nf);
+            }
+     
+        return ans;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = scn.nextInt();
+		}
+		System.out.println(solution(arr));
+
+	}
+
+}
